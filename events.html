@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Events</title>
+        <link rel="stylesheet" href="./static/styles.css">
+
+        <script src="./static/menu.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    </head>
+    <body>
+        <nav id="header">
+            <!-- RESOURCE[1] Opens the sidebar menu based off openMenu() function-->
+            <span onclick="openMenu()" class="header-item">
+                <img src="./static/images/menu-icon.png" class="header-menu-icon" alt="open the navigation menu">
+            </span>
+            <a href="index.html" class="header-home">ESP-VCT </a></span>
+        </nav>
+        <!--Sidebar menu that slides out from left side of the page-->
+        <div>
+            <div id="side-menu" class="header-menu">
+                <a href="javascript:void90)" class="close-menu" onclick="closeMenu()">
+                    &times;
+                </a>
+                <a href="index.html">Home</a>
+                <a href="news.html">News</a>
+                <a href="matches.html">Matches</a>
+                <a href="events.html">Events</a>
+                <a href="subscribe.html">Subscribe</a>
+            </div>
+            <div onclick="closeMenu()" id="header-offmenu">
+                &nbsp;
+            </div>
+        </div>
+        <!-- RESOURCE[2,3] CSS Grid implementation for easier resizing of window -->
+        <div id="grid-four-container">
+            <div class="events-container" id="events-upcoming">
+                <h2 class="events-heading">Upcoming Events</h2>
+                <div class="events-flexbox">
+                    <!-- 
+                    Each instance of div class events-event includes onclick
+                    function to change the tournament bracket and image list
+                    of teams to the approriate data. 
+
+                    Data pulled from object in matchData.js
+                    -->
+                    <div class="events-event" onclick="changeEvent(3)">
+                        <span class="events-title">
+                            NA CS VALORANT CHALLENGERS 2
+                        </span>
+                        <div class="events-text-flexbox">
+                            <span class="events-text">
+                                Ongoing<br>STATUS
+                            </span>
+                            <span class="events-text">
+                                $200,000<br>PRIZE POOL
+                            </span>
+                            <span class="events-text">
+                                Apr 12 - Apr 24<br>DATES
+                            </span>
+                        </div>
+                    </div>
+                    <div class="events-event" onclick="changeEvent(4)">
+                        <span class="events-title">
+                            VALORANT GAME CHANGERS
+                        </span>
+                        <div class="events-text-flexbox">
+                            <span class="events-text">
+                                Ongoing<br>STATUS
+                            </span>
+                            <span class="events-text">
+                                $50,000<br>PRIZE POOL
+                            </span>
+                            <span class="events-text">
+                                Jun 19 - Jul 1<br>DATES
+                            </span>
+                        </div>
+                    </div>
+                    <div class="events-event" onclick="changeEvent(5)">
+                        <span class="events-title">
+                            MASTERS IEM INVITATIONAL 2022
+                        </span>
+                        <div class="events-text-flexbox">
+                            <span class="events-text">
+                                Ongoing<br>STATUS
+                            </span>
+                            <span class="events-text">
+                                $500,000<br>PRIZE POOL
+                            </span>
+                            <span class="events-text">
+                                Oct 5 - Oct 12<br>DATES
+                            </span>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            <div class="events-tournament-container" id="events-tournament">
+                <h2 class="events-tournament-heading" id="ev-tourn-name"></h2>
+                <!-- RESOURCE[5]
+                    Each line is associated with a list class that pulls data
+                    from matchData.js and uses the data through 
+                    loadTournamentBracket.js to populate each line with the teams.
+
+                    Teams that win are forwarded through the tournament bracket
+                    so the winning teams are repeated by setting a class and for
+                    each class instance of the class name, the team name is passed
+                 -->
+                <div class="events-tournament-bracket">
+                    <ul class="bracket-round round-1">
+                        <li class="connect">&nbsp;</li>
+                        <li class="bracket-top">
+                            <p class="bracket-text ev-tourn-t1"></p>
+                        </li>
+                        <li class=" bracket-connect">
+                            &nbsp;
+                        </li>
+                        <li class="bracket-bottom winner">
+                            <p class="bracket-text ev-tourn-t2"></p>
+                        </li>
+                        <li class="connect">&nbsp;</li>
+                        <li class="bracket-top winner">
+                            <p class="bracket-text ev-tourn-t3"></p>
+                        </li>
+                        <li class="bracket-connect">
+                            &nbsp;
+                        </li>
+                        <li class="bracket bracket-bottom">
+                            <p class="bracket-text ev-tourn-t4"></p>
+                        </li>
+                        <li class="connect">&nbsp;</li>
+                    </ul>
+                    <ul class="bracket-round round-2">
+                        <li class="connect">&nbsp;</li>
+                        <li class="bracket bracket-top">
+                            <p class="bracket-text ev-tourn-t2"></p>
+                        </li>
+                        <li class="bracket bracket-connect">
+                            &nbsp;
+                        </li>
+                        <li class="bracket bracket-bottom winner">
+                            <p class="bracket-text ev-tourn-t3"></p>
+                        </li>
+                        <li class="connect">&nbsp;</li>
+                    </ul>
+                    <ul class="bracket-round round-2">
+                        <li class="connect">&nbsp;</li>
+
+                        <li class="bracket bracket-top winner">
+                            <p class="bracket-text ev-tourn-t3"></p>
+                        </li>
+                        <li class="connect">&nbsp;</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 
+            Depending on the event chosen which runs the function from 
+            loadTournamentBracket.js, the teams and their team logo are
+            passed and populated in the div
+             -->
+            <div class="events-teams-container" id="events-teams">
+                <h2 class="events-teams-heading">Teams</h2>
+                <div class="events-teams-flexbox">
+                    <div class="events-teams-single">
+                        <span class="events-teams-name ev-tourn-t1"> 
+                        </span>
+                        <img src="#" class="events-teams-img" id="ev-t1-img" alt="#">                 
+                    </div>
+                    <div class="events-teams-single">
+                        <span class="events-teams-name ev-tourn-t2">
+                        </span>   
+                        <img src="#" class="events-teams-img" id="ev-t2-img" alt="#">                 
+                    </div>
+                    <div class="events-teams-single">
+                        <span class="events-teams-name ev-tourn-t3">
+                        </span>
+                        <img src="#" class="events-teams-img" id="ev-t3-img" alt="#">                 
+                    </div>
+                    <div class="events-teams-single">
+                        <span class="events-teams-name ev-tourn-t4">
+                        </span>
+                        <img src="#" class="events-teams-img" id="ev-t4-img" alt="#">                 
+                    </div>
+                </div>
+            </div>
+            <div class="events-container" id="events-completed">
+                <h2 class="events-heading">Completed Events</h2>
+                <div class="events-flexbox">
+                    <!-- 
+                    Each instance of div class events-event includes onclick
+                    function to change the tournament bracket and image list
+                    of teams to the approriate data. 
+    
+                    Data pulled from object in matchData.js
+                    -->
+                    <div class="events-event" onclick="changeEvent(0)">
+                        <span class="events-title">
+                            KFT CUP 2022
+                        </span>
+                        <div class="events-text-flexbox">
+                            <span class="events-text">
+                                Completed<br>STATUS
+                            </span>
+                            <span class="events-text">
+                                $15,000<br>PRIZE POOL
+                            </span>
+                            <span class="events-text">
+                                Feb 28 - Mar 10<br>DATES
+                            </span>
+                        </div>
+                    </div>
+                    <div class="events-event" onclick="changeEvent(1)">
+                        <span class="events-title">
+                            NA CS VALORANT CHALLENGERS 1
+                        </span>
+                        <div class="events-text-flexbox">
+                            <span class="events-text">
+                                Completed<br>STATUS
+                            </span>
+                            <span class="events-text">
+                                $185,000<br>PRIZE POOL
+                            </span>
+                            <span class="events-text">
+                                Feb 18 - Feb 22<br>DATES
+                            </span>
+                        </div>
+                    </div>
+                    <div class="events-event" onclick="changeEvent(2)">
+                        <span class="events-title">
+                            2022 CORSAIR INTERNATIONAL CHALLENGE
+                        </span>
+                        <div class="events-text-flexbox">
+                            <span class="events-text">
+                                Completed<br>STATUS
+                            </span>
+                            <span class="events-text">
+                                $1,000,000<br>PRIZE POOL
+                            </span>
+                            <span class="events-text">
+                                Jan 27 - Jan 31<br>DATES
+                            </span>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <footer id="footer">
+            <div id="footer-site">
+                <a href="index.html" class="header-home">ESP-VCT </a>
+                <div>
+                    <a href="http://www.twitter.com" class="footer-socials-link" target="_blank" rel="noopener noreferrer">
+                        <img src="./static/images/twitter.png" class="footer-icon" alt="Redirect to twitter page">
+                    </a>
+                    <a href="http://www.facebook.com" class="footer-socials-link" target="_blank" rel="noopener noreferrer">
+                        <img src="./static/images/facebook.png" class="footer-icon" alt="Redirect to facebook page">
+                    </a>
+                    <a href="http://www.instagram.com" class="footer-socials-link" target="_blank" rel="noopener noreferrer">
+                        <img src="./static/images/instagram.png" class="footer-icon" alt="Redirect to instagram page">
+                    </a>
+                </div>
+                <div>
+                    <a href="index.html" class="footer-links">Home</a>
+                    <a href="news.html" class="footer-links">News</a>
+                    <a href="matches.html" class="footer-links">Matches</a>
+                    <a href="events.html" class="footer-links">Events</a>
+                    <a href="subscribe.html" class="footer-links">Subscribe</a>
+                </div>
+            </div>
+        </footer>
+        <script src="./static/dataObjects.js"></script>
+        <script src="./static/loadTournamentBracket.js"></script>
+    </body>
+</html>

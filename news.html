@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>News</title>
+        <link rel="stylesheet" href="./static/styles.css">
+
+        <!-- Sets variables for the sidebar menu-->
+        <script src="./static/menu.js"></script>
+    </head>
+    <body>
+        <nav id="header">
+            <!-- RESOURCE[1] Opens the sidebar menu based off openMenu() function-->
+            <span onclick="openMenu()" class="header-item">
+                <img src="./static/images/menu-icon.png" class="header-menu-icon" alt="open the navigation menu">
+            </span>
+            <a href="index.html" class="header-home">ESP-VCT </a></span>
+        </nav>
+        <!--Sidebar menu that slides out from left side of the page-->
+        <div>
+            <div id="side-menu" class="header-menu">
+                <a href="javascript:void90)" class="close-menu" onclick="closeMenu()">
+                    &times;
+                </a>
+                <a href="index.html">Home</a>
+                <a href="news.html">News</a>
+                <a href="matches.html">Matches</a>
+                <a href="events.html">Events</a>
+                <a href="subscribe.html">Subscribe</a>
+            </div>
+            <div onclick="closeMenu()" id="header-offmenu">
+                &nbsp;
+            </div>
+        </div>
+        <!-- RESOURCE[2,3] CSS Grid implementation for easier resizing of window -->
+        <div id="grid-container">
+            <div class="news-story-flexbox" id="news-links-top">
+                <!-- 
+                Runs a function loadStories while passing the id value of the story to pull up
+                the appropriate story and insert into the story section
+                -->
+                <div class="box news-clickable" id="news-story1" onclick="changeStory(1)">
+                    100T
+                </div>
+                <div class="box news-clickable" id="news-story2" onclick="changeStory(2)">
+                    SENTINELS
+                </div>
+                <div class="box news-clickable" id="news-story3"  onclick="changeStory(3)">
+                    OPTIC
+                </div>
+                <div class="box news-clickable" id="news-story4"  onclick="changeStory(4)">
+                    T1
+                </div>
+                <div class="box news-clickable" id="news-story5"  onclick="changeStory(5)">
+                    VCT EMEA
+                </div>
+            </div>
+            <!-- 
+            Inserts the appropriate data into the assigned span, img , p sections with
+            the associated id
+            -->
+            <div id="news-story">
+                <h1 class="news-title" id="story-title"></h1>
+                <img src="#" id="news-banner" alt="#">
+                <p class="news-text" id="story-text1">
+
+                </p>
+                <img src="#" id="news-subBanner" alt="#">
+                <p class="news-text" id="story-text2">
+                </p>
+                <p class="news-text">
+                    Original story found here - <a id="story-credits" target="_blank" rel="noopener nofererrer" href="#">Click me!</a>
+                </p>
+            </div>
+            <div class="news-story-flexbox" id="news-links-bottom">
+                <div class="box news-clickable" id="news-story1" onclick="changeStory(1)">
+                    100T
+                </div>
+                <div class="box news-clickable" id="news-story2" onclick="changeStory(2)">
+                    SENTINELS
+                </div>
+                <div class="box news-clickable" id="news-story3"  onclick="changeStory(3)">
+                    OPTIC
+                </div>
+                <div class="box news-clickable" id="news-story4"  onclick="changeStory(4)">
+                    T1
+                </div>
+                <div class="box news-clickable" id="news-story5"  onclick="changeStory(5)">
+                    VCT EMEA
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+            <div id="footer-site">
+                <a href="index.html" class="header-home">ESP-VCT </a>
+                <div>
+                    <a href="http://www.twitter.com" class="footer-socials-link" target="_blank" rel="noopener noreferrer">
+                        <img src="./static/images/twitter.png" class="footer-icon" alt="Redirect to twitter page">
+                    </a>
+                    <a href="http://www.facebook.com" class="footer-socials-link" target="_blank" rel="noopener noreferrer">
+                        <img src="./static/images/facebook.png" class="footer-icon" alt="Redirect to facebook page">
+                    </a>
+                    <a href="http://www.instagram.com" class="footer-socials-link" target="_blank" rel="noopener noreferrer">
+                        <img src="./static/images/instagram.png" class="footer-icon" alt="Redirect to instagram page">
+                    </a>
+                </div>
+                <div>
+                    <a href="index.html" class="footer-links">Home</a>
+                    <a href="news.html" class="footer-links">News</a>
+                    <a href="matches.html" class="footer-links">Matches</a>
+                    <a href="events.html" class="footer-links">Events</a>
+                    <a href="subscribe.html" class="footer-links">Subscribe</a>
+                </div>
+            </div>
+        </footer>
+        <script src="./static/dataObjects.js"></script>
+        <script src="./static/loadStories.js"></script>
+    </body>
+</html>

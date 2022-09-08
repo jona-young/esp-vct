@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Home of ESP-VCT</title>
+        <link rel="stylesheet" href="./static/styles.css">
+
+        <!-- Sets variables for the sidebar menu-->
+        <script src="./static/menu.js"></script>
+        <!-- Imports the handlebars js library through CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    </head>
+    <body>
+        <!-- RESOURCE [7]
+        Creates story divs and inserted into {{> @partial-block }} 
+        within the home-template. Uses data passed through the partial
+        -->
+        <script id="home-stories-list" type="template/handlebars">
+            {{#>storylist}}
+                {{# each this}}
+                        <a href="news.html?story={{this.linkParam}}" style="display:block" class="{{this.cNames}}" id="{{this.id}}">
+                            <img src="{{this.newsData.img1}}" class="{{this.classImg}}" alt="{{this.newsData.alt1}}">
+                            <span class="{{this.heading}}">
+                                {{this.newsData.title}}
+                            </span>
+                            <span class="home-date">
+                                {{this.newsData.date}}
+                            </span>
+                        </a>
+                {{/each}}
+            {{/storylist}}
+        </script>
+        <!-- RESOURCE [7]
+            Main template of the page
+        -->
+        <script id="home-template" type="template/handlebars">
+            <nav id="header">
+                <!-- RESOURCE[1] Opens the sidebar menu based off openMenu() function-->
+                <span onclick="openMenu()" class="header-item">
+                    <img src="./static/images/menu-icon.png" class="header-menu-icon" alt="open the navigation menu">
+                </span>
+                <a href="index.html" class="header-home">ESP-VCT </a></span>
+            </nav>
+            <!--Sidebar menu that slides out from left side of the page-->
+            <div>
+                <div id="side-menu" class="header-menu">
+                    <a href="javascript:void90)" class="close-menu" onclick="closeMenu()">
+                        &times;
+                    </a>
+                    <a href="index.html">Home</a>
+                    <a href="news.html">News</a>
+                    <a href="matches.html">Matches</a>
+                    <a href="events.html">Events</a>
+                    <a href="subscribe.html">Subscribe</a>
+                </div>
+                <div onclick="closeMenu()" id="header-offmenu">
+                    &nbsp;
+                </div>
+            </div>
+            <!-- RESOURCE[2,3] CSS Grid implementation for easier resizing of window -->
+            <div id="grid-container">
+                <!-- The news stories created through Handlebars JS partial block -->
+                {{> @partial-block }}
+                <!-- Shows matches and redirects to matches.html -->
+                <div class="box matchbox" id="home-matches">
+                    <h2 class="home-title">Past Matches</h3>
+                    <div class="matchbox-flexbox">
+                        <a href="matches.html?match=0" class="home-match">
+                            VERSION1
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            1
+                            <br>
+                            NRG
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            0
+                        </a>
+                        <a href="matches.html?match=1" class="home-match">
+                            Sentinels
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            1
+                            <br>
+                            Team Solid
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            0
+                        </a>
+                        <a href="matches.html?match=2" class="home-match">
+                            100T
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            0
+                            <br>
+                            fnatic
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            1
+                        </a>
+                    </div>
+                </div>
+                <!-- Shows events and redirects to events.html -->
+                <div class="box subArt" id="home-events">
+                    <h2 class="home-title">Upcoming Events</h3>
+                    <div id="home-events-flexbox">
+                        <a href="events.html?event=0" class="home-event" onclick="changeEvent(0)">
+                            <span class="home-event-title">
+                                KFT CUP 2022
+                            </span>
+                            <div class="home-text-flexbox">
+                                <span class="home-event-text">
+                                    Completed<br>STATUS
+                                </span>
+                                <span class="home-event-text">
+                                    $15,000<br>PRIZE POOL
+                                </span>
+                                <span class="home-event-text">
+                                    Jan 27 - Mar 27<br>DATES
+                                </span>
+                            </div>
+                        </a>
+                        <a href="events.html?event=1" class="home-event" onclick="changeEvent(1)">
+                            <span class="home-event-title">
+                                NA CS VALORANT CHALLENGERS 1
+                            </span>
+                            <div class="home-text-flexbox">
+                                <span class="home-event-text">
+                                    Completed<br>STATUS
+                                </span>
+                                <span class="home-event-text">
+                                    $185,000<br>PRIZE POOL
+                                </span>
+                                <span class="home-event-text">
+                                    Jan 27 - Mar 27<br>DATES
+                                </span>
+                            </div>
+                        </a>
+                        <a href="events.html?event=2" class="home-event" onclick="changeEvent(2)">
+                            <span class="home-event-title">
+                                2022 CORSAIR INTERNATIONAL CHALLENGE
+                            </span>
+                            <div class="home-text-flexbox">
+                                <span class="home-event-text">
+                                    Completed<br>STATUS
+                                </span>
+                                <span class="home-event-text">
+                                    $1,000,000<br>PRIZE POOL
+                                </span>
+                                <span class="home-event-text">
+                                    Jan 27 - Mar 27<br>DATES
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- Redirects to subscribe.html -->
+                <a href="subscribe.html" class="box subArt" id="home-subscribe">
+                    <div class="home-subscribe-background"></div>
+                    <div class="home-subscribe-box"></div>
+                    <div class="home-subscribe-ontop">
+                        <h2 class="home-subscribe-title">Subscribe Now!</h3>
+                        <div class="home-subscribe-flexbox">
+                                <ul class="home-subscribe-list">
+                                    <li>ESP-VCT Digital Magazine</li>
+                                    <li>Inside ESP-VCT Newsletter, emailed weekly</li>
+                                    <li>Exclusive ESP-VCT monthly drops to use in-game in Valorant</li>
+                                </ul>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <footer id="footer">
+                <div id="footer-site">
+                    <a href="index.html" class="header-home">ESP-VCT </a>
+                    <div>
+                        <a href="http://www.twitter.com" class="footer-socials-link" target="_blank" rel="noopener noreferrer">
+                            <img src="./static/images/twitter.png" class="footer-icon" alt="Redirect to twitter page">
+                        </a>
+                        <a href="http://www.facebook.com" class="footer-socials-link" target="_blank" rel="noopener noreferrer">
+                            <img src="./static/images/facebook.png" class="footer-icon" alt="Redirect to facebook page">
+                        </a>
+                        <a href="http://www.instagram.com" class="footer-socials-link" target="_blank" rel="noopener noreferrer">
+                            <img src="./static/images/instagram.png" class="footer-icon" alt="Redirect to instagram page">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="index.html" class="footer-links">Home</a>
+                        <a href="news.html" class="footer-links">News</a>
+                        <a href="matches.html" class="footer-links">Matches</a>
+                        <a href="events.html" class="footer-links">Events</a>
+                        <a href="subscribe.html" class="footer-links">Subscribe</a>
+                    </div>
+                </div>
+            </footer>
+        </script>
+        <script src="./static/dataObjects.js"></script>
+        <script src="./static/loadStories.js"></script>
+        <script>
+            // RESOURCE [7]
+            // Sets variable for the partial to be implemented into the main template
+            var partialSrc = document.getElementById('home-stories-list').innerHTML;
+            // Sets variable for main template
+            var templateSrc = document.getElementById('home-template').innerHTML;
+            // Create partial
+            var template = Handlebars.compile(partialSrc);
+
+            // Link partial to the main template
+            Handlebars.registerPartial("storylist", templateSrc);
+
+            // Data object to implement into the partial
+            var data = {
+                1: {
+                    cNames: 'box',
+                    id: 'mainArt',
+                    classImg: 'mainImg',
+                    heading: "home-caption main-caption",
+                    linkParam: '1',
+                    newsData: storiesObject[1]
+                },
+                2: {
+                    cNames: 'box subArt',
+                    id: 'box1',
+                    classImg: 'mobImg',
+                    heading: "home-caption",
+                    linkParam: '2',
+                    newsData: storiesObject[2]
+                },
+                3: {
+                    cNames: 'box subArt',
+                    id: 'box2',
+                    classImg: 'mobImg',
+                    heading: "home-caption",
+                    linkParam: '3',
+                    newsData: storiesObject[3]
+                },
+                4: {
+                    cNames: 'box subArt',
+                    id: 'box3',
+                    classImg: 'mobImg',
+                    heading: "home-caption",
+                    linkParam: '4',
+                    newsData: storiesObject[4]
+                },
+                5: {
+                    cNames: 'box subArt',
+                    id: 'box4',
+                    classImg: 'mobImg',
+                    heading: "home-caption",
+                    linkParam: '5',
+                    newsData: storiesObject[5]
+                }
+            }
+
+            // Render the data object into the partial which will be implemented
+            // into the main template through the partial block
+            document.body.innerHTML += template(data);
+        </script>
+    </body>
+</html>

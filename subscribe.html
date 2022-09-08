@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Subscribe</title>
+        <link rel="stylesheet" href="./static/styles.css">
+
+
+        <script src="./static/menu.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    </head>
+    <body>
+        <nav id="header">
+            <!-- RESOURCE[1] Opens the sidebar menu based off openMenu() function-->
+            <span onclick="openMenu()" class="header-item">
+                <img src="./static/images/menu-icon.png" class="header-menu-icon" alt="open the navigation menu">
+            </span>
+            <a href="index.html" class="header-home">ESP-VCT </a></span>
+        </nav>
+        <!--Sidebar menu that slides out from left side of the page-->
+        <div>
+            <div id="side-menu" class="header-menu">
+                <a href="javascript:void90)" class="close-menu" onclick="closeMenu()">
+                    &times;
+                </a>
+                <a href="index.html">Home</a>
+                <a href="news.html">News</a>
+                <a href="matches.html">Matches</a>
+                <a href="events.html">Events</a>
+                <a href="subscribe.html">Subscribe</a>
+            </div>
+            <div onclick="closeMenu()" id="header-offmenu">
+                &nbsp;
+            </div>
+        </div>
+        <!-- RESOURCE[2,3] CSS Grid implementation for easier resizing of window -->
+        <div id="grid-container">
+            <div id="subscribe-headerbox">
+                <h1 class="subscribe-heading">
+                    Game Sense For The Win
+                </h1>
+                <span class="subscribe-subheading">
+                    CHOOSE YOUR SUBSCRIPTION AND STAY ALERT
+                </span>
+            </div>
+            <div id="subscribe-subscriptions">
+                <div class="subscribe-flexbox">
+                    <div class="subscribe-option">
+                        <span class="subscribe-title">Plus+ Tier</span>
+                        <span class="subscribe-price">$2.99/Mth</span>
+                        <a href="https://www.paypal.com" class="subscribe-button" target="_blank" rel="noopener noreferrer">SELECT</a>
+                        <ul class="subscribe-features">
+                            <li>Unlimited access to ESP-VCT.com</li>
+                            <li>Access to the ESP-VCT Digital Magazine</li>
+                            <li>Inside ESP-VCT, delivered twice weekly</li>
+                        </ul>
+                    </div>
+                    <div class="subscribe-option">
+                        <span class="subscribe-title">Pro Tier</span>
+                        <span class="subscribe-price">$4.99/Mth</span>
+                        <a href="https://www.paypal.com" class="subscribe-button" target="_blank" rel="noopener noreferrer">SELECT</a>
+                        <ul class="subscribe-features">
+                            <li>Plus+ Tier benefits included</li>
+                            <li>Access to monthly seminars with VCT profesisonal coaches</li>
+                            <li>Exclusive member drops to use in Valorant</li>
+                        </ul>
+                    </div>
+                    <div class="subscribe-option">
+                        <span class="subscribe-title">GOAT Tier</span>
+                        <span class="subscribe-price">$250/Yr</span>
+                        <a href="https://www.paypal.com" class="subscribe-button" target="_blank" rel="noopener noreferrer">SELECT</a>
+                        <ul class="subscribe-features">
+                            <li>Plus+ and Pro Tier benefits included</li>
+                            <li>Meet and Greet with a VCT Tier 1 Professional player every month</li>
+                            <li>Signed merch from the monthly professional player</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+            <div id="footer-site">
+                <a href="index.html" class="header-home">ESP-VCT </a>
+                <div>
+                    <a href="http://www.twitter.com" class="footer-socials-link" target="_blank" rel="noopener noreferrer">
+                        <img src="./static/images/twitter.png" class="footer-icon" alt="Redirect to twitter page">
+                    </a>
+                    <a href="http://www.facebook.com" class="footer-socials-link" target="_blank" rel="noopener noreferrer">
+                        <img src="./static/images/facebook.png" class="footer-icon" alt="Redirect to facebook page">
+                    </a>
+                    <a href="http://www.instagram.com" class="footer-socials-link" target="_blank" rel="noopener noreferrer">
+                        <img src="./static/images/instagram.png" class="footer-icon" alt="Redirect to instagram page">
+                    </a>
+                </div>
+                <div>
+                    <a href="index.html" class="footer-links">Home</a>
+                    <a href="news.html" class="footer-links">News</a>
+                    <a href="matches.html" class="footer-links">Matches</a>
+                    <a href="events.html" class="footer-links">Events</a>
+                    <a href="subscribe.html" class="footer-links">Subscribe</a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Matches</title>
+        <link rel="stylesheet" href="./static/styles.css">
+
+        <script src="./static/menu.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    </head>
+    <body>
+        <nav id="header">
+            <!-- RESOURCE[1] Opens the sidebar menu based off openMenu() function-->
+            <span onclick="openMenu()" class="header-item">
+                <img src="./static/images/menu-icon.png" class="header-menu-icon" alt="open the navigation menu">
+            </span>
+            <a href="index.html" class="header-home">ESP-VCT </a></span>
+        </nav>
+        <!--Sidebar menu that slides out from left side of the page-->
+        <div>
+            <div id="side-menu" class="header-menu">
+                <a href="javascript:void90)" class="close-menu" onclick="closeMenu()">
+                    &times;
+                </a>
+                <a href="index.html">Home</a>
+                <a href="news.html">News</a>
+                <a href="matches.html">Matches</a>
+                <a href="events.html">Events</a>
+                <a href="subscribe.html">Subscribe</a>
+            </div>
+            <div onclick="closeMenu()" id="header-offmenu">
+                &nbsp;
+            </div>
+        </div>
+        <!-- RESOURCE[2,3] CSS Grid implementation for easier resizing of window -->
+        <div id="grid-container">
+            <div class="box matchbox" id="matches-matches">
+                <h2 class="home-title">Past Matches</h2>
+                <div class="matches-flexbox">
+                    <!--
+                    Each span match-single triggers an onclick function which will
+                    change the match information in the div below it. It will set the
+                    tournament name, the round, the score, and the boxscore for the players
+                     -->
+                    <span class="match-single" onclick="changeMatch(0)">
+                        <span id="team1">VERSION1</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span id="team1-score">1</span>
+                        <br>
+                          <span id="team2">NRG</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span id="team2-score">0</span>
+                    </span>
+                    <span class="match-single" onclick="changeMatch(1)">
+                        <span id="team3">Sentinels</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span id="team3-score">1</span>
+                        <br>
+                          <span id="team4">OpTic</span>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span id="team4-score">0</span>
+                    </span>
+                    </span>
+                    <span class="match-single"  onclick="changeMatch(2)">
+                        <span id="team5">100T</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;  
+                        <span id="team5-score">0</span>
+                        <br>
+                          <span id="team6">fnatic</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span id="team6-score">1</span>
+                    </span>
+                    </span>
+                </div>
+            </div>
+            <!--
+            The table that is populated by the selection of the div Past Matches. Pulls
+            data from matchData.js and runs loadMatchData.js that populates the data into
+            to appropriate spans and the table (rows and column values)
+            -->
+            <div class="matchtable" id="matches-table">
+                <h1><span id="team-event"></span></h1>
+                <h3><span id="team-round"></span></h3>
+                <div id="matches-matchup">
+                    <span class="matches-headings"><br>
+                        <span class="team-h1"></span>
+                    </span>
+                    <span class="matches-headings">Final<br>
+                        <span id="team-h1score"></span>
+                        - 
+                        <span id="team-h2score"></span>
+                        <br><span id="team-BO">BO1</span></span>
+                    <span class="matches-headings"><br>
+                        <span class="team-h2"></span>
+                    </span>
+                </div>
+                <span class="matches-headings"><br>
+                    <span class="team-h1">VERSION1</span>
+                </span>
+                <table id="matches-boxscore">
+                    <tr>
+                        <th class="col">Name</th>
+                        <th class="col">ACS</th>
+                        <th class="col">KDA</th>
+                        <th class="col">HS%</th>
+                        <th class="col">FB</th>
+                        <th class="col">+/-</th>
+
+                    </tr>
+                    <tr>
+                        <td class="col"><span class="team1-player">penny</span></td>
+                        <td class="col">278</td>
+                        <td class="col">27 / 8 / 11</td>
+                        <td class="col">35%</td>
+                        <td class="col">6</td>
+                        <td class="col">+6</td>
+
+                    </tr>
+                    <tr>
+                        <td class="col"><span class="team1-player">effys</span></td>
+                        <td class="col">351</td>
+                        <td class="col">35 / 2 / 18</td>
+                        <td class="col">52%</td>
+                        <td class="col">11</td>
+                        <td class="col">+17</td>
+
+                    </tr>
+                    <tr>
+                        <td class="col"><span class="team1-player">zellsis</span></td>
+                        <td class="col">123</td>
+                        <td class="col">15 / 12 / 8</td>
+                        <td class="col">25%</td>
+                        <td class="col">2</td>
+                        <td class="col">+4</td>
+
+                    </tr>
+                    <tr>
+                        <td class="col"><span class="team1-player">vander</span></td>
+                        <td class="col">88</td>
+                        <td class="col">13 / 21 / 10</td>
+                        <td class="col">22%</td>
+                        <td class="col">0</td>
+                        <td class="col">-10</td>
+
+                    </tr>
+                    <tr>
+                        <td class="col"><span class="team1-player">trent</span></td>
+                        <td class="col">157</td>
+                        <td class="col">22 / 19 / 20</td>
+                        <td class="col">28%</td>
+                        <td class="col">4</td>
+                        <td class="col">+11</td>
+
+                    </tr>
+                </table>
+                <span class="matches-headings"><br>
+                    <span class="team-h2">NRG</span>
+                </span>
+                <table id="matches-boxscore">
+                    <tr>
+                        <th class="col">Name</th>
+                        <th class="col">ACS</th>
+                        <th class="col">KDA</th>
+                        <th class="col">HS%</th>
+                        <th class="col">FB</th>
+                        <th class="col">+/-</th>
+
+                    </tr>
+                    <tr>
+                        <td class="col"><span class="team2-player">Android</span></td>
+                        <td class="col">278</td>
+                        <td class="col">41 / 17 / 3</td>
+                        <td class="col">45%</td>
+                        <td class="col">11</td>
+                        <td class="col">+40</td>
+
+                    </tr>
+                    <tr>
+                        <td class="col"><span class="team2-player">Hazed</span></td>
+                        <td class="col">351</td>
+                        <td class="col">22 / 22 / 21</td>
+                        <td class="col">32%</td>
+                        <td class="col">6</td>
+                        <td class="col">+25</td>
+
+                    </tr>
+                    <tr>
+                        <td class="col"><span class="team2-player">Tex</span></td>
+                        <td class="col">164</td>
+                        <td class="col">14 / 4 / 4</td>
+                        <td class="col">29%</td>
+                        <td class="col">3</td>
+                        <td class="col">+17</td>
+
+                    </tr>
+                    <tr>
+                        <td class="col"><span class="team2-player">eeiuu</span></td>
+                        <td class="col">144</td>
+                        <td class="col">14 / 10 / 9</td>
+                        <td class="col">22%</td>
+                        <td class="col">0</td>
+                        <td class="col">+1</td>
+
+                    </tr>
+                    <tr>
+                        <td class="col"><span class="team2-player">s0m</span></td>
+                        <td class="col">117</td>
+                        <td class="col">5 / 5 / 20</td>
+                        <td class="col">25%</td>
+                        <td class="col">0</td>
+                        <td class="col">+5</td>
+
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+        <footer id="footer">
+            <div id="footer-site">
+                <a href="index.html" class="header-home">ESP-VCT </a>
+                <div>
+                    <a href="http://www.twitter.com" class="footer-socials-link" target="_blank" rel="noopener noreferrer">
+                        <img src="./static/images/twitter.png" class="footer-icon" alt="Redirect to twitter page">
+                    </a>
+                    <a href="http://www.facebook.com" class="footer-socials-link" target="_blank" rel="noopener noreferrer">
+                        <img src="./static/images/facebook.png" class="footer-icon" alt="Redirect to facebook page">
+                    </a>
+                    <a href="http://www.instagram.com" class="footer-socials-link" target="_blank" rel="noopener noreferrer">
+                        <img src="./static/images/instagram.png" class="footer-icon" alt="Redirect to instagram page">
+                    </a>
+                </div>
+                <div>
+                    <a href="index.html" class="footer-links">Home</a>
+                    <a href="news.html" class="footer-links">News</a>
+                    <a href="matches.html" class="footer-links">Matches</a>
+                    <a href="events.html" class="footer-links">Events</a>
+                    <a href="subscribe.html" class="footer-links">Subscribe</a>
+                </div>
+            </div>
+        </footer>
+        <script src="./static/dataObjects.js"></script>
+        <script src="./static/loadMatchData.js"></script>
+    </body>
+</html>
